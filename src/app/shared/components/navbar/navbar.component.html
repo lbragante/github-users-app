@@ -1,1 +1,22 @@
-<p>navbar works!</p>
+<header class="bg-white">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <div class="flex-1 md:flex md:items-center md:gap-12">
+                <a class="block text-teal-600" routerLink="/usuarios">
+                    <h1 class="text-sky-700 font-bold">GitHub Users App</h1>
+                </a>
+            </div>
+
+            <div class="md:flex md:items-center md:gap-12">
+                <nav>
+                    <ul class="flex items-center gap-6 text-md">
+                        <li *ngFor="let link of links">
+                            <a class="text-gray-500 transition hover:text-sky-700" [routerLink]="link.route"
+                                routerLinkActive="text-sky-700">{{ link.label }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

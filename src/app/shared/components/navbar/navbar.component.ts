@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavbarLinks } from 'src/app/core/models/links-navbar.model';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  links: NavbarLinks[] = [
+    { label: 'Usuários', route: '/usuarios' },
+    { label: 'Sobre', route: '/sobre' }
+  ];
 }

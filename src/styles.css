@@ -4,7 +4,3 @@
 @tailwind utilities;
 
 @import '@fontsource-variable/sora';
-
-body {
-    font-family: 'Sora Variable', sans-serif;
-}
