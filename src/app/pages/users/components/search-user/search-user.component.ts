@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-user',
@@ -14,12 +14,16 @@ export class SearchUserComponent {
 
   constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
-      searchQuery: [''],
+      searchQuery: ['', [Validators.required, Validators.minLength(1)]]
     });
+
+    console.log(this.searchForm.value.searchQuery)
   }
 
   search(): void {
-    this.searchQueryChange.emit(this.searchForm.value.searchQuery);
+    if (this.searchForm.valid) {
+      this.searchQueryChange.emit(this.searchForm.value.searchQuery);
+    }
   }
 
 }

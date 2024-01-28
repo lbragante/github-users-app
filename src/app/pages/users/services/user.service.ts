@@ -12,11 +12,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(page: number, perPage: number, username: string): Observable<GitHubUser> {
-    const params = new HttpParams()
-      .set('q', username ? `user:${username}` : 'type:user')
+  getAllUsers(page: number, perPage: number): Observable<GitHubUser> {
+    let params = new HttpParams()
+      .set('q', 'type:user')
       .set('per_page', perPage.toString())
       .set('page', page.toString());
+
+    return this.http.get<GitHubUser>(`${this.apiUrl}/search/users`, { params });
+  }
+
+  getUserByUsername(username: string): Observable<GitHubUser> {
+    let params = new HttpParams()
+      .set('q', `user:${username}`);
 
     return this.http.get<GitHubUser>(`${this.apiUrl}/search/users`, { params });
   }

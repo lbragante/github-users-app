@@ -24,13 +24,14 @@ export class UserListComponent {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getAllUsers();
   }
 
-  getUsers(): void {
+  getAllUsers(): void {
+    this.users = [];
     this.alert = { title: '', description: '', context: 'danger' };
 
-    this.userService.getUsers(this.currentPage, this.perPage, this.searchQuery)
+    this.userService.getAllUsers(this.currentPage, this.perPage)
       .subscribe({
         next: (data: any) => {
           this.users = data.items;
@@ -44,19 +45,40 @@ export class UserListComponent {
       });
   }
 
+  getUserByUsername(username: string): void {
+    this.users = [];
+    this.alert = { title: '', description: '', context: 'danger' };
+
+    this.userService.getUserByUsername(username)
+      .subscribe({
+        next: (data: any) => {
+          this.users = data.items;
+          this.alert.title = 'Deu certo!';
+          this.alert.description = `${this.users.length} usuário(s) encontrado(s)`;
+          this.alert.context = 'success';
+        },
+        error: (error: any) => {
+          console.error(error);
+          this.alert.title = 'Erro ao listar os usuários';
+          this.alert.description = 'Desculpe, ocorreu um erro inesperado ou nenhum usuário foi encontrado.';
+          this.alert.context = 'danger';
+        }
+      });
+  }
+
   onSearchQueryChange(searchQuery: string): void {
     this.searchQuery = searchQuery;
-    this.getUsers();
+    this.getUserByUsername(this.searchQuery);
   }
 
   handlePageChange(page: number): void {
     this.currentPage = page;
-    this.getUsers();
+    this.getAllUsers();
   }
 
   searchUsers(): void {
     this.currentPage = 1;
-    this.getUsers();
+    this.getAllUsers();
   }
 
 }

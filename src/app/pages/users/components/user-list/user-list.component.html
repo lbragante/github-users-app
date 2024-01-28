@@ -4,6 +4,12 @@
     <app-alert *ngIf="alert.description" [title]="alert.title" [description]="alert.description"
         [context]="alert.context"></app-alert>
 
+    <button *ngIf="users.length <= 1"
+        class="block shrink-0 rounded-lg bg-sky-600 px-6 py-3 mb-6 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring"
+        (click)="getAllUsers()">Listar todos
+    </button>
+
+
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <app-user-card *ngFor="let user of users" [login]="user.login" [avatarUrl]="user.avatar_url"
             [htmlUrl]="user.html_url"></app-user-card>
