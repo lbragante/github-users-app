@@ -5,6 +5,7 @@ import { UserRoutingModule } from '../pages/users/user-routing.module';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AlertComponent } from './components/alert/alert.component';
     NavbarComponent,
     UserCardComponent,
     PaginationComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { AlertComponent } from './components/alert/alert.component';
     NavbarComponent,
     UserCardComponent,
     PaginationComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
