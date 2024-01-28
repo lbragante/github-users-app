@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { GitHubUser } from 'src/app/core/models/github-user.model';
+import { AlertModel } from 'src/app/core/models/alert.model';
 
 @Component({
   selector: 'app-user-list',
@@ -14,6 +15,12 @@ export class UserListComponent {
   perPage: number = 20;
   searchQuery: string = '';
 
+  alert: AlertModel = {
+    title: '',
+    description: '',
+    context: 'info'
+  };
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
@@ -21,9 +28,21 @@ export class UserListComponent {
   }
 
   getUsers(): void {
-    this.userService.getUsers(this.currentPage, this.perPage, this.searchQuery).subscribe((data: any) => {
-      this.users = data.items;
-    });
+    this.alert = { title: '', description: '', context: 'danger' };
+
+    this.userService.getUsers(this.currentPage, this.perPage, this.searchQuery)
+      .subscribe({
+        next: (data: any) => {
+          this.users = data.items;
+          console.log(this.users)
+        },
+        error: (error: any) => {
+          console.error(error);
+          this.alert.title = 'Erro ao listar os usuários';
+          this.alert.description = 'Desculpe, ocorreu um erro inesperado. Por favor, tente novamente mais tarde.';
+          this.alert.context = 'danger';
+        }
+      });
   }
 
   handlePageChange(page: number): void {

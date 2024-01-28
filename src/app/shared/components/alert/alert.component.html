@@ -1,0 +1,17 @@
+<div [ngClass]="{
+    'border-red-500': isDanger,
+    'border-green-500': isSuccess,
+    'border-blue-500': isInfo,
+    'bg-red-50': isDanger,
+    'bg-green-50': isSuccess,
+    'bg-blue-50': isInfo
+    }" role="alert" class="rounded drop-shadow-md border-2 bg-blue-50 p-4 my-6">
+    <strong [ngClass]="{'text-red-800': isDanger, 'text-green-800': isSuccess, 'text-blue-800': isInfo}"
+        class="block font-medium">
+        {{ title }}
+    </strong>
+    <p [ngClass]="{'text-red-700': isDanger, 'text-green-700': isSuccess, 'text-blue-700': isInfo}"
+        class="mt-2 text-sm">
+        {{ description }}
+    </p>
+</div>

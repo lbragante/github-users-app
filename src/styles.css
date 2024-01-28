@@ -4,3 +4,12 @@
 @tailwind utilities;
 
 @import '@fontsource-variable/sora';
+
+
+.app-hover {
+    transition: all .2s ease-in-out !important;
+}
+
+.app-hover:hover {
+    transform: translateY(-5px) !important;
+}
