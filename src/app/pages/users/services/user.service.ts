@@ -14,7 +14,7 @@ export class UserService {
 
   getUsers(page: number, perPage: number, username: string): Observable<GitHubUser> {
     const params = new HttpParams()
-      .set('q', `type:user${username ? `+${username}` : ''}`)
+      .set('q', username ? `user:${username}` : 'type:user')
       .set('per_page', perPage.toString())
       .set('page', page.toString());
 

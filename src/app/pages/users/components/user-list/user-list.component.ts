@@ -34,7 +34,6 @@ export class UserListComponent {
       .subscribe({
         next: (data: any) => {
           this.users = data.items;
-          console.log(this.users)
         },
         error: (error: any) => {
           console.error(error);
@@ -43,6 +42,11 @@ export class UserListComponent {
           this.alert.context = 'danger';
         }
       });
+  }
+
+  onSearchQueryChange(searchQuery: string): void {
+    this.searchQuery = searchQuery;
+    this.getUsers();
   }
 
   handlePageChange(page: number): void {
