@@ -4,6 +4,11 @@
     <div class="mx-auto max-w-screen-xl py-8 px-4 sm:px-6 lg:px-8">
         <app-alert *ngIf="alert.description" [title]="alert.title" [description]="alert.description"
             [context]="alert.context"></app-alert>
+
+            <div *ngIf="users.length >= perPage" class="w-full py-6">
+                <app-pagination [currentPage]="currentPage" (pageChanged)="handlePageChange($event)">
+                </app-pagination>
+            </div>
     
         <button *ngIf="users.length <= 1"
             class="block shrink-0 rounded-lg bg-sky-600 px-6 py-3 mb-6 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring"

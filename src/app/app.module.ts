@@ -8,13 +8,17 @@ import { UserListComponent } from './pages/users/components/user-list/user-list.
 import { SharedModule } from './shared/shared.module';
 import { SearchUserComponent } from './pages/users/components/search-user/search-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './core/components/loading/loading.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     UserListComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
