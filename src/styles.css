@@ -13,3 +13,17 @@
 .app-hover:hover {
     transform: translateY(-5px) !important;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-sky-800;
+    border-radius: 6px;
+    border: 3px solid #f4f4f4;
+}
