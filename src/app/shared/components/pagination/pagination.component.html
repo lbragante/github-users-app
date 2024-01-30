@@ -1,6 +1,6 @@
 <div class="flex items-center justify-end gap-3">
     <button
-        class="block shrink-0 rounded-lg bg-sky-600 shadow-sm px-4 py-3 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring disabled:opacity-50 disabled:bg-sky-600"
+        class="block shrink-0 rounded-lg bg-sky-600 shadow-sm px-3 py-3 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring disabled:opacity-50 disabled:bg-sky-600"
         [class.disabled]="currentPage === 1"
         (click)="prevPage()"
         [disabled]="currentPage === 1"
@@ -13,7 +13,7 @@
     </button>
     <span>Página {{ currentPage }}</span>
     <button
-        class="block shrink-0 rounded-lg bg-sky-600 px-4 py-3 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring"
+        class="block shrink-0 rounded-lg bg-sky-600 px-3 py-3 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring"
         (click)="nextPage()"
         aria-label="Próxima">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
